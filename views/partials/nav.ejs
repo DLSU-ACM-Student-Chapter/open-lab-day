@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="/styles/nav.css" />
+<nav>
+  <div class="back-container">
+    <a href="<%=backRoute%>" class="back">
+      <img src="/assets/back.png" alt="back" />
+      <p>Back</p>
+    </a>
+  </div>
+  <div class="dropdown">
+    <div class="img-container">
+      <p class="username"><%=name%></p>
+      <img src="/assets/cali.webp" alt="cali" />
+    </div>
+    <ul>
+      <li>
+        <img src="/assets/username-white.png" alt="ID" />
+        <span><%=idNum%></span>
+      </li>
+      <li>
+        <button>
+          <img src="/assets/logout.png" alt="logout" />
+          <span>Logout</span>
+        </button>
+        <form action="/logout" method="post" hidden></form>
+      </li>
+    </ul>
+  </div>
+</nav>
+<script>
+  const button = document.querySelector("nav button");
+  const post = document.querySelector("nav form");
+  button.addEventListener("click", () => {
+    post.submit();
+  });
+</script>

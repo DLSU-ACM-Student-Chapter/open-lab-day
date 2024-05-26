@@ -1,0 +1,114 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90dvh;
+}
+
+.circle {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle svg {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  transform: rotate(270deg);
+}
+
+.circle svg circle {
+  width: 100%;
+  height: 100%;
+  fill: transparent;
+  stroke-width: 20;
+  stroke: gray;
+  transform: translate(80px, 80px);
+}
+
+.circle svg circle:nth-child(2) {
+  stroke: var(--light);
+  stroke-dasharray: 880;
+  stroke-dashoffset: 880;
+}
+
+.circle div {
+  position: absolute;
+  text-align: center;
+  font-weight: 500;
+  color: white;
+  font-size: 1.5em;
+}
+
+.circle .dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: 10;
+}
+
+.circle .dots::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--light);
+  border-radius: 50%;
+  box-shadow: 0 0 20px var(--light), 0 0 60px var(--light);
+}
+
+p {
+  font-weight: 100;
+  letter-spacing: 2px;
+}
+
+.code {
+  font-size: 60px;
+}
+
+button {
+  text-align: center;
+  padding: 15px 25px;
+  background-color: var(--light);
+  border-radius: 10px;
+  border: none;
+  box-shadow: 2px 2px 3px black;
+  transition: 0.2s ease opacity;
+}
+
+button:hover {
+  opacity: 0.8;
+  transition: 0.2s ease opacity;
+}
+
+button:active {
+  box-shadow: none;
+  position: relative;
+  top: 2px;
+  left: 2px;
+}
+
+button p {
+  font-weight: bold;
+  color: var(--navy);
+}
+
+.button-container {
+  margin-top: 40px;
+  display: flex;
+  gap: 20px;
+}

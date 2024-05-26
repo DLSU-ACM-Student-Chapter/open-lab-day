@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/reglog.css" />
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <title>Register</title>
+  </head>
+  <body>
+    <h1><span>Student Registration</span></h1>
+
+    <p class="message">Welcome <span><%=name%></span>!</p>
+    <p>Please register your ID number and course.</p>
+
+    <form action="/student/register" id="registration" method="post">
+      <div class="field">
+        <label for="idNum"
+          ><img src="assets/username.png" class="label-logo"
+        /></label>
+        <input type="text" name="idNum" required placeholder="ID Number" />
+      </div>
+      <div class="field">
+        <label for="idNum-confirm"
+          ><img src="assets/confirm.png" class="label-logo"
+        /></label>
+        <input
+          type="text"
+          name="idNum-confirm"
+          placeholder="Confirm ID Number"
+          required
+        />
+      </div>
+
+      <div class="field">
+        <label for="course"
+          ><img src="assets/course.png" class="label-logo"
+        /></label>
+        <select name="course" required>
+          <option value="" disabled selected>Select Course</option>
+          <option value="BSCS-ST">BSCS-ST</option>
+          <option value="BSCS-CSE">BSCS-CSE</option>
+          <option value="BSCS-NIS">BSCS-NIS</option>
+          <option value="BSMSCS">BSMSCS</option>
+          <option value="BSIET-GD">BSIET-GD</option>
+          <option value="BSIET-AD">BSIET-AD</option>
+          <option value="Others">Others</option>
+        </select>
+        <img src="assets/select.svg" class="down" />
+      </div>
+      <div class="confirm">
+        <label for="confirmation">Did I double check my ID number?</label>
+        <input type="checkbox" name="confirmation" required />
+      </div>
+      <button type="submit">Register</button>
+    </form>
+    <%- include('../partials/popup.ejs')%>
+  </body>
+</html>

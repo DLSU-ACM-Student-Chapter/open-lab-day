@@ -1,0 +1,23 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80dvh;
+}
+
+h1 {
+  color: var(--warn);
+  margin: 20px;
+}
+
+p {
+  width: 300px;
+  margin-bottom: 10px;
+}
+
+a {
+  color: var(--light);
+  text-emphasis: none;
+  font-style: italic;
+}

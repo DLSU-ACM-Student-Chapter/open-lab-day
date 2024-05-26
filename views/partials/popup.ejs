@@ -1,0 +1,12 @@
+<%if (popup != null) {%>
+<div class="popup popup-<%=popup.type%>">
+  <p class="popup-message">
+    <span
+      ><img
+        src="/assets/<%=popup.type%>.svg"
+        alt="<%=popup.type%>"
+        class="popup-icon" /></span
+    ><%=popup.message%>
+  </p>
+</div>
+<%}%>

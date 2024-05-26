@@ -1,0 +1,42 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80dvh;
+  gap: 10px;
+}
+
+img {
+  position: relative;
+  right: 13px;
+  animation: wiggle 1s infinite;
+  margin-bottom: 30px;
+}
+
+h1 {
+  color: var(--light);
+}
+
+p {
+  text-align: center;
+  width: 300px;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(-10deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

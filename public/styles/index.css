@@ -1,0 +1,58 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90dvh;
+  justify-content: center;
+}
+
+body > * {
+  margin: 20px;
+}
+
+h1 {
+  font-size: xx-large;
+  font-style: italic;
+  margin-bottom: 0;
+}
+
+p {
+  width: 300px;
+}
+
+.home svg path {
+  fill: var(--light);
+}
+
+.home svg path:hover{
+  transition: opacity 0.5s;
+  opacity: 0.5;
+}
+
+.message > *{
+  margin: 10px;
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  animation: select 1s infinite;
+}
+
+.home p {
+  color: var(--light);
+  width: initial;
+  font-weight: bold;
+}
+
+@keyframes select {
+  0% {
+    gap: 0;
+  }
+  50% {
+    gap: 20px;
+  }
+  100% {
+    gap: 0;
+  }
+}

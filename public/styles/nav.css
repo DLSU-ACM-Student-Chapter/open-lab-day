@@ -1,0 +1,149 @@
+nav {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+nav .back-container {
+  flex: auto;
+  background: linear-gradient(
+    180deg,
+    var(--navy) 0%,
+    #0f4c75ad 70%,
+    hsla(201, 24%, 14%, 0) 100%
+  );
+}
+
+nav .back-container .back {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  padding-left: 2px;
+  width: 60px;
+  height: 55px;
+}
+
+nav .back-container .back img {
+  height: 25px;
+  margin-right: -5px;
+  margin-bottom: 8px;
+}
+
+nav .back-container .back p {
+  font-size: small;
+  margin-left: 2px;
+  margin-bottom: 8px;
+}
+
+nav .dropdown .img-container {
+  width: 200px;
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    var(--navy) 0%,
+    #0f4c75ad 70%,
+    hsla(201, 24%, 14%, 0) 100%
+  );
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+nav .dropdown .img-container > img {
+  height: 40px;
+  margin: 10px;
+}
+
+nav .dropdown .img-container > img {
+  animation: wiggle 8s infinite;
+}
+
+nav .dropdown > ul {
+  display: flex;
+  justify-content: end;
+  height: 130px;
+  padding: 10px 20px;
+  width: inherit;
+  position: absolute;
+  top: -120px; /*move this to animate*/
+  right: 0;
+  background: linear-gradient(
+    180deg,
+    var(--navy) 0%,
+    #0f4c75ad 70%,
+    hsla(201, 24%, 14%, 0) 100%
+  );
+  border-radius: 0 0 0 10px;
+  transition: top 0.5s ease-in-out;
+}
+
+nav .dropdown > ul li {
+  width: inherit;
+  display: flex;
+  font-size: normal;
+  justify-content: center;
+  align-items: center;
+}
+
+nav .img-container:active + ul,
+nav .img-container:hover + ul {
+  transition: top 0.5s ease-in-out;
+  top: 0;
+}
+
+nav .dropdown:hover > ul {
+  top: 0;
+}
+
+nav .dropdown .img-container .username {
+  font-size: small;
+  text-align: left;
+  position: relative;
+  bottom: 5px;
+}
+
+nav ul button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: white;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.5s ease;
+}
+
+nav ul button:hover {
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+nav ul li img {
+  height: 22px;
+  margin-right: 2px;
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  87.50% {
+    transform: rotate(0deg);
+  }
+  90.63% {
+    transform: rotate(10deg);
+  }
+  93.75% {
+    transform: rotate(-10deg);
+  }
+  96.88% {
+    transform: rotate(10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

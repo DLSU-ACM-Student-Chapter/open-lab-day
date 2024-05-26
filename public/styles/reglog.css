@@ -1,0 +1,94 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 90dvh;
+  justify-content: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+span {
+  color: var(--light);
+}
+
+form > * {
+  margin: 10px 20px;
+}
+
+.field {
+  position: relative;
+  left: 10px;
+}
+
+label {
+  z-index: 1;
+  position: relative;
+}
+
+input,
+select {
+  box-sizing: border-box;
+  font-style: italic;
+  height: 50px;
+  width: 300px;
+  padding: 3px 10px 3px 35px;
+  border: none;
+  position: relative;
+  left: -22px;
+  border-radius: 10px;
+}
+
+.label-logo {
+  height: 20px;
+  position: relative;
+  top: 5px;
+  left: 10px;
+}
+
+button {
+  border: none;
+  font-weight: bold;
+  align-self: flex-end;
+  position: relative;
+  right: 10px;
+  height: 30px;
+  width: 100px;
+  border-radius: 10px;
+  background-color: var(--light);
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: var(--blue);
+}
+
+.footer {
+  width: 380px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+
+.confirm {
+  display: flex;
+  justify-content: flex-end;
+}
+.confirm > label {
+  left: -30px;
+}
+
+.confirm > input {
+  width: 20px !important;
+  position: none !important;
+  height: 20px !important;
+}
+
+.message {
+  font-size: larger;
+  margin-top: 10px;
+}

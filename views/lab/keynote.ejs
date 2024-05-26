@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles/global.css" />
+    <link rel="stylesheet" href="styles/lab.css" />
+    <title>Keynote Speaker</title>
+  </head>
+  <body>
+    <div class="circle">
+      <div class="dots sec_dot"></div>
+      <svg>
+        <circle cx="70" cy="70" r="140" />
+        <circle cx="70" cy="70" r="140" id="ss" />
+      </svg>
+      <div id="center">
+        <p class="labname">KEYNOTE Talk</p>
+        <h1 class="code">******</h1>
+        <p class="footer">Code Hidden</p>
+      </div>
+    </div>
+    <div class="button-container">
+      <button class="show-hide" onclick="codeVisibility()">
+        <p>SHOW</p>
+      </button>
+    </div>
+  </body>
+  <script>
+    let time = parseInt("<%=countdown%>");
+    const end = parseInt("<%=end%>");
+    const ss = document.getElementById("ss");
+    const sec_dot = document.querySelector(".sec_dot");
+    const offset = 880;
+    const button = document.querySelector("show-hide");
+    const code = document.querySelector(".code");
+    const footer = document.querySelector(".footer");
+    const button_text = document.querySelector(".show-hide p");
+    let isHidden = true;
+
+    setInterval(() => {
+      time--;
+      ss.style.strokeDashoffset = offset - (time / end) * offset;
+      if (time / 60 == 1) {
+        sec_dot.style.transform = `rotate(${(time / end) * 360}deg)`;
+      } else {
+        sec_dot.style.transform = `rotate(${(time / end) * 360}deg)`;
+      }
+      if (time == 0) {
+        window.location.reload();
+      }
+    }, 1000);
+
+    const codeVisibility = () => {
+      isHidden = !isHidden;
+      console.log(isHidden);
+      if (!isHidden) {
+        code.innerHTML = "<%=code%>";
+        footer.innerHTML = "Enter the code";
+        button_text.innerHTML = "HIDE";
+      } else {
+        code.innerHTML = "******";
+        footer.innerHTML = "Code Hidden";
+        button_text.innerHTML = "SHOW";
+      }
+    };
+  </script>
+</html>
