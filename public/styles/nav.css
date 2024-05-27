@@ -65,9 +65,10 @@ nav .dropdown .img-container > img {
 nav .dropdown > ul {
   display: flex;
   justify-content: end;
+  flex-direction: column;
   height: 130px;
   padding: 10px 20px;
-  width: inherit;
+  width: 95.175px;
   position: absolute;
   top: -120px; /*move this to animate*/
   right: 0;
@@ -79,6 +80,8 @@ nav .dropdown > ul {
   );
   border-radius: 0 0 0 10px;
   transition: top 0.5s ease-in-out;
+  list-style: none;
+  align-items: center;
 }
 
 nav .dropdown > ul li {
@@ -115,6 +118,8 @@ nav ul button {
   display: flex;
   align-items: center;
   transition: opacity 0.5s ease;
+  box-shadow: none;
+  border: none;
 }
 
 nav ul button:hover {
@@ -125,6 +130,10 @@ nav ul button:hover {
 nav ul li img {
   height: 22px;
   margin-right: 2px;
+}
+
+nav form {
+  display: none;
 }
 
 @keyframes wiggle {
