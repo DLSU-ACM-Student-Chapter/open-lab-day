@@ -9,6 +9,7 @@ import {
 import Account from "../model/accounts.js";
 import CheckLists from "../model/checklists.js";
 import { getLab, labList } from "../utils/labcodes.js";
+import moment from "moment-timezone";
 
 const router = express.Router();
 
@@ -284,7 +285,10 @@ const studentRoutes = (app) => {
       else if (lab.code === inputCode && lab.activated) {
         CheckLists.findOneAndUpdate(
           { idNum, "labList.labName": labName },
-          { "labList.$.visited": true, "labList.$.visitTime": Date() }
+          {
+            "labList.$.visited": true,
+            "labList.$.visitTime": moment.tz("Asia/Manila"),
+          }
         )
           .then(() => {
             req.flash("message", labName + " Code accepted.");
@@ -327,7 +331,10 @@ const studentRoutes = (app) => {
       if (talkCodes.includes(inputCode)) {
         CheckLists.findOneAndUpdate(
           { idNum, "labList.labName": labName },
-          { "labList.$.visited": true, "labList.$.visitTime": Date() }
+          {
+            "labList.$.visited": true,
+            "labList.$.visitTime": moment.tz("Asia/Manila"),
+          }
         )
           .then(() => {
             req.flash("message", labName + " Code accepted.");

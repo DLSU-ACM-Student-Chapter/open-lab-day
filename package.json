@@ -20,6 +20,7 @@
     "express": "^4.19.2",
     "express-minify": "^1.0.0",
     "express-session": "^1.18.0",
+    "moment-timezone": "^0.5.45",
     "mongoose": "^8.3.3",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
