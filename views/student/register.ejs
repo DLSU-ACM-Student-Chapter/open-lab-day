@@ -11,7 +11,6 @@
   <body>
     <h1><span>Student Registration</span></h1>
 
-    <p class="message">Welcome <span><%=name%></span>!</p>
     <p>Please register your ID number and course.</p>
 
     <form action="/student/register" id="registration" method="post">
@@ -50,7 +49,12 @@
         <img src="assets/select.svg" class="down" />
       </div>
       <div class="confirm">
-        <label for="confirmation">Did I double check my ID number?</label>
+        <label for="confirmation"
+          >I Accept the
+          <a href="/student/data_privacy" target="_blank"
+            >Privacy Policy</a
+          ></label
+        >
         <input type="checkbox" name="confirmation" required />
       </div>
       <button type="submit">Register</button>

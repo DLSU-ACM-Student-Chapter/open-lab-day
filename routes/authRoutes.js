@@ -3,6 +3,7 @@ import passport from "passport";
 import GoogleAuth from "passport-google-oauth20";
 import LocalStrategy from "passport-local";
 import Account from "../model/accounts.js";
+import crypto from "crypto";
 
 const router = express.Router();
 const GoogleStrategy = GoogleAuth.Strategy;
@@ -95,18 +96,18 @@ export const logOut = (req, res, next) => {
 
 const authRoutes = (app) => {
   const googleAuthCB = (req, accessToken, refreshToken, profile, done) => {
-    const email = profile._json.email;
-    const name = profile._json.name;
-    Account.findOne({ email }).then((account) => {
+    const hash = crypto.createHash("sha256");
+    const subID = hash.update(profile._json.sub).digest("hex");
+    Account.findOne({ subID }).then((account) => {
       if (account) {
-        console.log(account.email, "account found.");
+        console.log(account.subID, "found.");
         return done(null, account);
       }
-      const newAccount = new Account({ name, email });
+      const newAccount = new Account({ subID });
       newAccount
         .save()
         .then(() => {
-          console.log(newAccount.email, "account created.");
+          console.log(newAccount.subID, "account created.");
           return done(null, newAccount);
         })
         .catch((err) => {
@@ -122,7 +123,7 @@ const authRoutes = (app) => {
   };
 
   const labLoginCB = (username, password, done) => {
-    Account.findOne({ email: username }).then((account) => {
+    Account.findOne({ subID: username }).then((account) => {
       if (!account) {
         return done(null, false, { message: "Invalid Username." });
       }

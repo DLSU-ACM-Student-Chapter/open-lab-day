@@ -3,6 +3,9 @@ import mongoose from "mongoose";
 const accountSchema = new mongoose.Schema({
   name: {
     type: String,
+  },
+  subID: {
+    type: String,
     required: true,
   },
   idNum: {
@@ -30,10 +33,6 @@ const accountSchema = new mongoose.Schema({
     enum: ["student", "labHead"],
     required: true,
     default: "student",
-  },
-  email: {
-    type: String,
-    required: true,
   },
 });
 

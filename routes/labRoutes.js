@@ -31,7 +31,7 @@ const labRoutes = (app) => {
     (req, res, next) => {
       const username = req.body.username;
       const password = req.body.password;
-      Account.findOne({ email: username, idNum: password, role: "labHead" })
+      Account.findOne({ subID: username, idNum: password, role: "labHead" })
         .then((user) => {
           if (!user) {
             req.flash("message", "Invalid lab credentials.");

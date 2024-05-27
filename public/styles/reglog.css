@@ -2,7 +2,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 90dvh;
+  height: 95dvh;
   justify-content: center;
 }
 
@@ -91,4 +91,8 @@ button:hover {
 .message {
   font-size: larger;
   margin-top: 10px;
+}
+
+.confirm a {
+  color: var(--blue);
 }

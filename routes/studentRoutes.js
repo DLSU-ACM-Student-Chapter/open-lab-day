@@ -20,7 +20,6 @@ const studentRoutes = (app) => {
     const message = req.flash("message");
     const type = req.flash("type");
     res.render("student/register", {
-      name: req.user.name,
       popup: message.length == 0 ? null : { message, type },
     });
   });
@@ -59,7 +58,7 @@ const studentRoutes = (app) => {
                 }
               )
                 .then((user) => {
-                  console.log(user.name, "registered.");
+                  console.log(user.subID, "registered.");
                 })
                 .catch((err) => {
                   console.log(err);
@@ -125,6 +124,10 @@ const studentRoutes = (app) => {
     logOut
   );
 
+  router.get("/data_privacy", (req, res) => {
+    res.render("student/data_privacy");
+  });
+
   router.get("/", isAuthenticated, isRegistered, isStudent, (req, res) => {
     const message = req.flash("message");
     const type = req.flash("type");
@@ -142,7 +145,6 @@ const studentRoutes = (app) => {
             popup: message.length == 0 ? null : { message, type },
             labList: checkList.labList,
             backRoute: "/",
-            name: req.user.name,
             idNum: req.user.idNum,
           });
         } else {
@@ -186,7 +188,6 @@ const studentRoutes = (app) => {
               popup: message.length == 0 ? null : { message, type },
               backRoute: "/student",
               lab,
-              name: req.user.name,
               idNum: req.user.idNum,
             });
           }
@@ -227,7 +228,6 @@ const studentRoutes = (app) => {
             res.render("student/seminar", {
               popup: message.length == 0 ? null : { message, type },
               backRoute: "/student",
-              name: req.user.name,
               idNum: req.user.idNum,
             });
           }
