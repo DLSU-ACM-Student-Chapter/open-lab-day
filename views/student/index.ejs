@@ -14,10 +14,7 @@
       <li>
         <h1><%=check.labName%></h1>
         <% if (check.visited) { %>
-        <p class="visited">
-          Visited:
-          <%=check.visitTime.getHours()%>:<%=check.visitTime.getMinutes()%>:<%=check.visitTime.getSeconds()%>
-        </p>
+        <p class="visited">Visited: <%=check.visitTime%></p>
         <% } else { %>
         <p>Not yet visited</p>
         <% } %> <% if (check.visited) { %>

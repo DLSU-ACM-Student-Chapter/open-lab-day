@@ -136,6 +136,7 @@ const studentRoutes = (app) => {
             isComplete = false;
           }
         });
+
         if (!isComplete) {
           res.render("student/index", {
             popup: message.length == 0 ? null : { message, type },
@@ -287,7 +288,9 @@ const studentRoutes = (app) => {
           { idNum, "labList.labName": labName },
           {
             "labList.$.visited": true,
-            "labList.$.visitTime": moment.tz("Asia/Manila"),
+            "labList.$.visitTime": moment
+              .tz("Asia/Manila")
+              .format("MMMM DD YYYY, h:mm:ss"),
           }
         )
           .then(() => {
@@ -333,7 +336,9 @@ const studentRoutes = (app) => {
           { idNum, "labList.labName": labName },
           {
             "labList.$.visited": true,
-            "labList.$.visitTime": moment.tz("Asia/Manila"),
+            "labList.$.visitTime": moment
+              .tz("Asia/Manila")
+              .format("MMMM DD YYYY, h:mm:ss"),
           }
         )
           .then(() => {

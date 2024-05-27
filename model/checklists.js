@@ -18,7 +18,7 @@ const checkListSchema = new mongoose.Schema({
         default: false,
       },
       visitTime: {
-        type: Date,
+        type: String,
       },
     },
   ],
