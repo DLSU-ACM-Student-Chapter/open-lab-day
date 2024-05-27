@@ -290,7 +290,7 @@ const studentRoutes = (app) => {
             "labList.$.visited": true,
             "labList.$.visitTime": moment
               .tz("Asia/Manila")
-              .format("MMMM DD YYYY, h:mm:ss"),
+              .format("MMMM DD YYYY, HH:mm:ss"),
           }
         )
           .then(() => {
@@ -338,7 +338,7 @@ const studentRoutes = (app) => {
             "labList.$.visited": true,
             "labList.$.visitTime": moment
               .tz("Asia/Manila")
-              .format("MMMM DD YYYY, h:mm:ss"),
+              .format("MMMM DD YYYY, HH:mm:ss"),
           }
         )
           .then(() => {
