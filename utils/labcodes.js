@@ -17,7 +17,6 @@ export const labList = [
   "CNIS",
   "COMET",
   "TE3DHOUSE",
-  "CITE4D",
   "GAMELAB",
 ];
 export const getLab = (lab) => {
