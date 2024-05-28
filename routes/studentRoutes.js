@@ -32,7 +32,7 @@ const studentRoutes = (app) => {
       const idNum = req.body.idNum;
       const idNum2 = req.body["idNum-confirm"];
       const course = req.body.course;
-      const isRequired = Boolean(req.body.required);
+      const isRequired = req.body.required == "true" ? true : false;
 
       // if idNum and idNum2 do not match
       if (idNum != idNum2) {
