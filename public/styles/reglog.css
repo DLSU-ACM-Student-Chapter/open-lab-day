@@ -96,3 +96,33 @@ button:hover {
 .confirm a {
   color: var(--blue);
 }
+
+.required {
+  border-radius: 10px;
+  position: relative;
+  left: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  color: black;
+  font-style: italic;
+  font-size: small;
+  width: 300px;
+  height: 50px;
+}
+
+.required select {
+  font-weight: bold;
+  position: initial;
+  width: 150px !important;
+  margin: 0 7px;
+  padding: 0 0 0 10px;
+  height: 40px;
+  background-color: var(--navy);
+  color: white;
+}
+
+.required .down {
+  right: 95px;
+}

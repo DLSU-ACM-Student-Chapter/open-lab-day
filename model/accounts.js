@@ -34,6 +34,10 @@ const accountSchema = new mongoose.Schema({
     required: true,
     default: "student",
   },
+  isRequired: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const Account = mongoose.model("Account", accountSchema);

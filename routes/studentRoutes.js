@@ -32,6 +32,7 @@ const studentRoutes = (app) => {
       const idNum = req.body.idNum;
       const idNum2 = req.body["idNum-confirm"];
       const course = req.body.course;
+      const isRequired = Boolean(req.body.required);
 
       // if idNum and idNum2 do not match
       if (idNum != idNum2) {
@@ -53,8 +54,9 @@ const studentRoutes = (app) => {
               Account.findOneAndUpdate(
                 { _id: req.user._id },
                 {
-                  idNum: idNum,
-                  course: course,
+                  idNum,
+                  course,
+                  isRequired,
                 }
               )
                 .then((user) => {
@@ -371,15 +373,14 @@ const studentRoutes = (app) => {
           if (!lab.visited) {
             isComplete = false;
           }
-
-          if (!isComplete) {
-            req.flash("message", "You are not done yet.");
-            req.flash("type", "warn");
-            res.redirect("/student");
-          } else {
-            res.render("student/done");
-          }
         });
+        if (!isComplete) {
+          req.flash("message", "You are not done yet.");
+          req.flash("type", "warn");
+          res.redirect("/student");
+        } else {
+          res.render("student/done");
+        }
       })
       .catch((err) => {
         res.render("error", {

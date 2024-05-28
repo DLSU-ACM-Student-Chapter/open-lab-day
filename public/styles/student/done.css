@@ -21,6 +21,12 @@ h1 {
 p {
   text-align: center;
   width: 300px;
+  letter-spacing: 1px;
+}
+
+span {
+  color: var(--light);
+  font-weight: bold;
 }
 
 @keyframes wiggle {

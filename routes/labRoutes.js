@@ -76,7 +76,7 @@ const labRoutes = (app) => {
   });
 
   router.get("/:lab", isAuthenticated, isLabHead, (req, res) => {
-    const labName = req.params.lab;
+    const labName = req.params.lab.toUpperCase();
     if (labList.includes(labName)) {
       if (labName == req.user.name || req.user.name == "ACM Officers") {
         activateCode(labName);
@@ -109,7 +109,7 @@ const labRoutes = (app) => {
   });
 
   router.get("/:lab/talk", isAuthenticated, isLabHead, (req, res) => {
-    const labName = req.params.lab;
+    const labName = req.params.lab.toUpperCase();
     if (labList.includes(labName)) {
       if (labName == req.user.name || req.user.name == "ACM Officers") {
         activateCode(labName);
