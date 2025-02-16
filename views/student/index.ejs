@@ -11,21 +11,21 @@
     <%- include('../partials/nav.ejs') %>
     <ul>
       <% labList.forEach((check) => { %>
-      <li>
-        <h1><%=check.labName%></h1>
-        <% if (check.visited) { %>
-        <p class="visited">Visited: <%=check.visitTime%></p>
-        <% } else { %>
-        <p>Not yet visited</p>
-        <% } %> <% if (check.visited) { %>
-        <img src="/assets/check.svg" alt="visited" class="visited-logo" />
-        <% } else if (check.labName != 'Talk') { %>
-        <a href="/student/lab/<%=check.labName%>">VISIT</a>
-        <% } else { %>
-        <a href="/student/seminar">VISIT</a>
-        <% } %>
-        <hr />
-      </li>
+        <li>
+          <h1><%= check.labName %></h1>
+          <% if (check.visited) { %>
+          <p class="visited">Visited: <%= check.visitTime %></p>
+          <% } else { %>
+          <p>Not yet visited</p>
+          <% } %> <% if (check.visited) { %>
+          <img src="/assets/check.svg" alt="visited" class="visited-logo" />
+          <% } else if (check.labName != 'Talk') { %>
+          <a href="/student/lab/<%= check.labName %>">VISIT</a>
+          <% } else { %>
+          <a href="/student/seminar">VISIT</a>
+          <% } %>
+          <hr />
+        </li>
       <% }) %>
     </ul>
 
