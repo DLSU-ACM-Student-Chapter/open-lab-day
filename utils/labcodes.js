@@ -1,4 +1,8 @@
 import "dotenv/config";
+import fs from "fs";
+
+const labsFilePath = "./data/labs.json";
+
 export let time = parseInt(process.env.COUNTDOWN);
 export let talkTime = parseInt(process.env.TALK_COUNTDOWN);
 export const activateCode = (lab) => {
@@ -7,18 +11,18 @@ export const activateCode = (lab) => {
 export const deactivateCode = (lab) => {
   labCodes[lab].activated = false;
 };
-export const labList = [
-  "ALTDSI",
-  "BIOINFOM",
-  "CAR",
-  "CEHCI",
-  "CELT",
-  "CIVI",
-  "CNIS",
-  "COMET",
-  "TE3DHOUSE",
-  "GAMELAB",
-];
+function loadLabsFromFile(filePath) {
+  try {
+    const data = fs.readFileSync(filePath);
+    const labs = JSON.parse(data);
+    return labs.map(lab => lab.name); // Extract just the names
+  } catch (error) {
+    console.error('Error loading labs from file:', error);
+    return []; // Return an empty array if there's an error
+  }
+}
+export const labList = loadLabsFromFile(labsFilePath);
+
 export const getLab = (lab) => {
   if (lab == "TALK") {
     return Object.values(labCodes)

@@ -1,0 +1,46 @@
+[
+  {
+    "name": "ALTDSI",
+    "active": true
+  },
+  {
+    "name": "BIOINFOM",
+    "active": true
+  },
+  {
+    "name": "CAR",
+    "active": true
+  },
+  {
+    "name": "CEHCI",
+    "active": true
+  },
+  {
+    "name": "CELT",
+    "active": true
+  },
+  {
+    "name": "CIVI",
+    "active": true
+  },
+  {
+    "name": "CNIS",
+    "active": true
+  },
+  {
+    "name": "COMET",
+    "active": true
+  },
+  {
+    "name": "TE3DHOUSE",
+    "active": true
+  },
+  {
+    "name": "GAMELAB",
+    "active": true
+  },
+  {
+    "name": "LabNiAeb",
+    "active": true
+  }
+]

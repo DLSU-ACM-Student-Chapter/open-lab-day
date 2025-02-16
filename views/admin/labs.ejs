@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lab Management</title>
+</head>
+<body>
+  <h1>Lab Management</h1>
+  <form id="labForm">
+    <div id="labsContainer">
+      </div>
+    <h2>Add New Lab</h2>
+    <input type="text" id="newLabName" placeholder="Lab Name">
+    <button type="button" onclick="addNewLab()">Add Lab</button>
+  </form>
+
+  <script>
+    function fetchLabs() {
+        fetch('/api/labs')
+            .then(response => response.json())
+            .then(labs => {
+            const labsContainer = document.getElementById('labsContainer');
+            labsContainer.innerHTML = ''; // Clear previous labs
+            labs.forEach(lab => {
+                if (lab && lab.name) { // Check if lab is valid and has a name property
+                const labDiv = document.createElement('div');
+                labDiv.innerHTML = `
+                    <input type="checkbox" id="${lab.name}" name="${lab.name}" ${lab.active ? 'checked' : ''}>
+                    <label for="${lab.name}">${lab.name}</label>
+                    <button type="button" onclick="removeLab('${lab.name}')">Remove</button>
+                `;
+                labsContainer.appendChild(labDiv);
+                } else {
+                console.warn("Invalid lab object:", lab); // Log the invalid lab object for debugging
+                }
+            });
+        });
+    }
+
+    function addNewLab() {
+        const newLabName = document.getElementById('newLabName').value;
+
+        // Basic validation: Check if the lab name is empty
+        if (!newLabName || newLabName.trim() === "") {
+            alert("Lab name cannot be empty.");
+            return; // Stop the function if the name is invalid
+        }
+
+        fetch('/api/labs', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name: newLabName, active: true })
+        })
+        .then(() => {
+            // Refresh the lab list after adding
+            fetchLabs();
+        });
+    }
+
+    // function addNewLab() {
+    //   fetch('/api/labs', {
+    //     method: 'POST',
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify({ name: "Simple", active: true })
+    //   })
+    //   .then(() => {
+    //     // Refresh the lab list after adding
+    //     fetchLabs();
+    //   });
+    // }
+
+    function updateLabs() {
+      const labsContainer = document.getElementById('labsContainer');
+      const checkboxes = labsContainer.querySelectorAll('input[type="checkbox"]');
+      const updatedLabs = Array.from(checkboxes).map(checkbox => ({
+        name: checkbox.id,
+        active: checkbox.checked
+      }));
+
+      fetch('/api/labs', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(updatedLabs)
+      })
+    .then(() => {
+        // Refresh the lab list after updating
+        fetchLabs(); 
+      });
+    }
+
+    function removeLab(labName) {
+      fetch(`/api/labs/${labName}`, { method: 'DELETE' })
+      .then(() => {
+          // Refresh the lab list after removing
+          fetchLabs(); 
+        });
+    }
+
+    // Fetch initial lab data on page load
+    fetchLabs();
+  </script>
+</body>
+</html>
