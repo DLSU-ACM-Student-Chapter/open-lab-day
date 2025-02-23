@@ -6,14 +6,14 @@ import {
   isNotAuthenticated,
   isNotRegistered,
 } from "./authRoutes.js";
-import { getLab, time, activateCode, labList } from "../utils/labcodes.js";
+import { getLab, time, activateCode } from "../utils/labcodes.js";
 import startTimerToKill from "../utils/heartbeat.js";
 import Account from "../model/accounts.js";
 import "dotenv/config";
 
 const router = express.Router();
 
-const labRoutes = (app) => {
+const labRoutes = (app, labList) => {
   router.use(express.static("public"));
 
   router.get("/", isNotAuthenticated, isNotRegistered, (req, res) => {
@@ -31,6 +31,7 @@ const labRoutes = (app) => {
     (req, res, next) => {
       const username = req.body.username;
       const password = req.body.password;
+      console.log("[Login] Received credentials for:", username);
       Account.findOne({ subID: username, idNum: password, role: "labHead" })
         .then((user) => {
           if (!user) {
@@ -48,6 +49,7 @@ const labRoutes = (app) => {
     passport.authenticate("labs-login"),
     (req, res) => {
       const labName = req.user.name;
+      console.log("[Login] Redirecting to lab:", labName);
       if (labName == "ACM Officers") {
         res.redirect("/lab/keynote");
       } else {
@@ -77,6 +79,11 @@ const labRoutes = (app) => {
 
   router.get("/:lab", isAuthenticated, isLabHead, (req, res) => {
     const labName = req.params.lab.toUpperCase();
+    console.log("[Routing] Requested lab:", labName);
+    if (!labList.includes(labName)) {
+      labList.push(labName);
+      console.log("[Routing] Added new lab to list:", labName);
+    }
     if (labList.includes(labName)) {
       if (labName == req.user.name || req.user.name == "ACM Officers") {
         activateCode(labName);
@@ -110,6 +117,11 @@ const labRoutes = (app) => {
 
   router.get("/:lab/talk", isAuthenticated, isLabHead, (req, res) => {
     const labName = req.params.lab.toUpperCase();
+    console.log("[Routing] Requested lab talk:", labName);
+    if (!labList.includes(labName)) {
+      labList.push(labName);
+      console.log("[Routing] Added new lab to list:", labName);
+    }
     if (labList.includes(labName)) {
       if (labName == req.user.name || req.user.name == "ACM Officers") {
         activateCode(labName);
@@ -141,6 +153,15 @@ const labRoutes = (app) => {
     }
   });
 
+  router.get("/admin/labs", isAuthenticated, isLabHead, (req, res) => {
+    if (req.user && req.user.name === "ACM Officers") {
+      res.render("admin/labs");
+    } else {
+      req.flash("message", "You are UNAUTHORIZED to access that route. Only ACM Officers can proceed.");
+      req.flash("type", "warn");
+      res.redirect("/");
+    }
+  });
   return router;
 };
 

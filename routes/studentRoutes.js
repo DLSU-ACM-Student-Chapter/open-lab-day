@@ -73,15 +73,19 @@ const studentRoutes = (app) => {
                 });
               // Create checklist for student
               var newCheckLab = [];
-              labList.sort().forEach((lab) => {
+              labList.sort().forEach((labName) => {
+                // Find the lab object in the labs array
+                const lab = labList.find(l => l.name === labName);
                 newCheckLab.push({
-                  labName: lab,
-                  checked: false,
+                  labName: labName,
+                  visited: false,
+                  active: lab ? lab.active : false // Add the active property
                 });
               });
               newCheckLab.push({
                 labName: "Talk",
                 visited: false,
+                active: true // Assuming "Talk" is always active
               });
 
               const newCheckList = new CheckLists({
