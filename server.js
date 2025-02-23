@@ -188,8 +188,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 // Auth Routes
 app.use("/", authRoutes(app));
-app.use("/student", studentRoutes(app, labList));
-app.use("/lab", labRoutes(app, labList)); // Make sure you pass labList when mounting labRoutes
+app.use("/student", studentRoutes(app, labList, labs));
+app.use("/lab", labRoutes(app, labList)); // Make sure you pass labList when mounting labRoutes)
 // compressor and minifier
 app.use(
   compression({
@@ -224,9 +224,9 @@ app.get("/", (req, res) => {
 });
 
 // ADMIN LABS PAGE
-app.get("/admin/labs", (req, res) => {
-  res.render("admin/labs");
-});
+// app.get("/admin/labs", (req, res) => {
+//   res.render("admin/labs");
+// });
 
 // Invalid Routes
 app.get("*", (req, res) => {

@@ -75,7 +75,7 @@ const studentRoutes = (app) => {
               var newCheckLab = [];
               labList.sort().forEach((labName) => {
                 // Find the lab object in the labs array
-                const lab = labs.find(l => l.name === labName);
+                const lab = labList.find(l => l.name === labName);
                 newCheckLab.push({
                   labName: labName,
                   visited: false,

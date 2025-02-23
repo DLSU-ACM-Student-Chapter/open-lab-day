@@ -153,6 +153,15 @@ const labRoutes = (app, labList) => {
     }
   });
 
+  router.get("/admin/labs", isAuthenticated, isLabHead, (req, res) => {
+    if (req.user && req.user.name === "ACM Officers") {
+      res.render("admin/labs");
+    } else {
+      req.flash("message", "You are UNAUTHORIZED to access that route. Only ACM Officers can proceed.");
+      req.flash("type", "warn");
+      res.redirect("/");
+    }
+  });
   return router;
 };
 
